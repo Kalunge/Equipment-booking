@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -8,12 +9,17 @@ import CartScreen from './screens/CartScreen';
 import OrderScreen from './screens/OrderScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import UserListScreen from './screens/UserListScreen';
+import ProductListScreen from './screens/ProductListScreen';
+import OrderListScreen from './screens/OrderListScreen';
 import ProfileSCreen from './screens/ProfileScreen';
 import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import UserEditScreen from './screens/UserEditScreen';
+import ProductEditSCreen from './screens/ProductEditSCreen';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Header />
@@ -25,7 +31,12 @@ function App() {
           <Route path='/placeorder' component={PlaceOrderScreen} />
           <Route path='/payment' component={PaymentScreen} />
           <Route path='/register' component={RegisterScreen} />
+          <Route path='/admin/userlist' component={UserListScreen} />
+          <Route path='/admin/productlist' component={ProductListScreen} />
+          <Route path='/admin/orderlist' component={OrderListScreen} />
+          <Route path='/admin/user/:id/edit' component={UserEditScreen} />
           <Route path='/profile' component={ProfileSCreen} />
+          <Route path='/admin/product/:id/edit' component={ProductEditSCreen} />
           <Route path='/product/:id' component={ProductScreen} />
           <Route path='/order/:id' component={OrderScreen} />
           <Route path='/cart/:id?' component={CartScreen} />
@@ -34,6 +45,6 @@ function App() {
       <Footer />
     </Router>
   );
-}
+};
 
 export default App;

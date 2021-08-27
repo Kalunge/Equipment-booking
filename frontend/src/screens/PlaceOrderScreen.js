@@ -9,11 +9,9 @@ import {
   ListGroupItem,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import FormContainer from '../components/FormContainer';
 import CheckoutSteps from '../components/CheckouSteps';
 import Message from '../components/Message';
 import { Link } from 'react-router-dom';
-// import { saveShippingAddress } from '../actions/cart';
 import { createOrder } from '../actions/order';
 
 const PlaceOrderScreen = ({ history }) => {

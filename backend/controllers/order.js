@@ -64,7 +64,6 @@ const updateOrderToPaid = asycnHandler(async (req, res) => {
       email_address: req.body.email_address,
     };
     const updatedOrder = await order.save();
-    console.log(updatedOrder);
     res.json(updatedOrder);
   } else {
     res.status(404);
@@ -72,4 +71,20 @@ const updateOrderToPaid = asycnHandler(async (req, res) => {
   }
 });
 
-export { addOrderItems, getOrder, updateOrderToPaid };
+// @desc  get logged in user orders
+// @route  GET /api/orders/myorders
+// @access  Private
+const getUserOrders = asycnHandler(async (req, res) => {
+  const orders = await Order.find({ user: req.user._id });
+  res.json(orders);
+});
+
+// @desc  get all  orders
+// @route  GET /api/orders
+// @access  Private->admin
+const getOrders = asycnHandler(async (req, res) => {
+  const orders = await Order.find({}).populate('user', 'id name');
+  res.json(orders);
+});
+
+export { addOrderItems, getOrder, updateOrderToPaid, getUserOrders, getOrders };
