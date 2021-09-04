@@ -87,4 +87,27 @@ const getOrders = asycnHandler(async (req, res) => {
   res.json(orders);
 });
 
-export { addOrderItems, getOrder, updateOrderToPaid, getUserOrders, getOrders };
+// @desc  update order to delivered
+// @route  GET /api/orders/:id/deliever
+// @access  Private->admin
+const updateOrderToDelivered = asycnHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+  if (order) {
+    order.isDelivered = true;
+    order.deliveredAt = Date.now();
+    const updatedOrder = await order.save();
+    res.json(updatedOrder);
+  } else {
+    res.status(404);
+    throw new Error('Order not found');
+  }
+});
+
+export {
+  addOrderItems,
+  getOrder,
+  updateOrderToPaid,
+  getUserOrders,
+  getOrders,
+  updateOrderToDelivered,
+};

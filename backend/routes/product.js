@@ -7,9 +7,13 @@ import {
   getProduct,
   getProducts,
   updateProduct,
+  addReview,
+  getTopProducts,
 } from '../controllers/product.js';
 
 router.route('/').get(getProducts).post(protect, admin, createProduct);
+router.route('/:id/reviews').post(protect, addReview);
+router.get('/top', getTopProducts);
 router
   .route('/:id')
   .get(getProduct)
