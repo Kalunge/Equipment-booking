@@ -1,6 +1,9 @@
 {
   "name": "shop",
   "version": "1.0.0",
+  "engines": {
+   "node": "16.4.2"
+   },
   "description": "Equipment booking webApp",
   "main": "server.js",
   "type": "module",
